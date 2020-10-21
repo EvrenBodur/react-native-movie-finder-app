@@ -6,8 +6,8 @@ import {
   searchMovieCleaner,
 } from "../../src/actions/moviesActions";
 import {
-  fetchCategories,
-  fetchSelectedCategory,
+  fetchMovieCategories,
+  fetchSelectedMovieCategory,
 } from "../../src/actions/categoriesActions";
 import { cleanSearchMovies } from "../../src/actions/actionCreators";
 import Movies from "./Movies";
@@ -23,8 +23,8 @@ const MoviesScreen = () => {
   const [value, onChangeText] = useState("");
 
   const { searchMovies } = useSelector((state) => state.searchMoviesStore);
-  const { categories, selectedCategoryMovies, hasError } = useSelector(
-    (state) => state.categoriesStore
+  const { movieCategories, selectedMovieCategory } = useSelector(
+    (state) => state.movieCategoriesStore
   );
 
   useEffect(() => {
@@ -35,11 +35,11 @@ const MoviesScreen = () => {
   }, [value, dispatch]);
 
   useEffect(() => {
-    dispatch(fetchCategories());
+    dispatch(fetchMovieCategories());
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchSelectedCategory(selectedValue));
+    dispatch(fetchSelectedMovieCategory(selectedValue));
   }, [selectedValue, dispatch]);
 
   return (
@@ -62,8 +62,8 @@ const MoviesScreen = () => {
         name="Categories"
         children={() => (
           <Categories
-            categories={categories}
-            movies={selectedCategoryMovies}
+            categories={movieCategories}
+            movies={selectedMovieCategory}
             selectedValue={selectedValue}
             setSelectedValue={setSelectedValue}
           />

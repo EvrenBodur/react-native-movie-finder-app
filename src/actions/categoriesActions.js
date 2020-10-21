@@ -1,28 +1,30 @@
 import * as action from "./actionCreators";
 
-export const fetchCategories = () => async (dispatch) => {
-  dispatch(action.getCategories());
+export const fetchMovieCategories = () => async (dispatch) => {
+  dispatch(action.getMovieCategories());
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/genre/movie/list?api_key=a78627f739e78c82e6335d377214ef74&language=en-US`
     );
     const data = await response.json();
-    dispatch(action.getCategoriesSuccess(data));
+    dispatch(action.getMovieCategoriesSuccess(data));
   } catch (error) {
-    dispatch(action.getCategoriesFail(error));
+    dispatch(action.getMovieCategoriesFail(error));
   }
 };
 
-export const fetchSelectedCategory = (selectedValue) => async (dispatch) => {
-  dispatch(action.getSelectedCategory());
+export const fetchSelectedMovieCategory = (selectedValue) => async (
+  dispatch
+) => {
+  dispatch(action.getSelectedMovieCategory());
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=a78627f739e78c82e6335d377214ef74&language=en-US&include_adult=false&page=1&with_genres=${selectedValue}`
     );
     const data = await response.json();
-    dispatch(action.getSelectedCategorySuccess(data));
+    dispatch(action.getSelectedMovieCategorySuccess(data));
   } catch (error) {
-    dispatch(action.getSelectedCategoryFail(error));
+    dispatch(action.getSelectedMovieCategoryFail(error));
   }
 };
 

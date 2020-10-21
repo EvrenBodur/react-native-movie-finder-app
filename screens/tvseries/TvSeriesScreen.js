@@ -23,9 +23,11 @@ const TvSeriesScreen = () => {
   const [value, onChangeText] = useState("");
 
   const { searchTvSeries } = useSelector((state) => state.searchTvSeriesStore);
-  const { categories, selectedCategoryMovies } = useSelector(
-    (state) => state.categoriesStore
-  );
+  const {
+    tvSeriesCategories,
+    selectedTvSeriesCategory,
+    hasError,
+  } = useSelector((state) => state.tvSeriesCategoriesStore);
 
   useEffect(() => {
     dispatch(fetchSearchTvSeries(value));
@@ -41,7 +43,7 @@ const TvSeriesScreen = () => {
   useEffect(() => {
     dispatch(fetchSelectedTvSeriesCategory(selectedValue));
   }, [selectedValue, dispatch]);
-  console.log(selectedValue);
+
   return (
     <Tab.Navigator
       initialRouteName="TvSeries"
@@ -62,10 +64,10 @@ const TvSeriesScreen = () => {
         name="Categories"
         children={() => (
           <Categories
+            categories={tvSeriesCategories}
+            movies={selectedTvSeriesCategory}
             selectedValue={selectedValue}
             setSelectedValue={setSelectedValue}
-            categories={categories}
-            movies={selectedCategoryMovies}
           />
         )}
         options={{

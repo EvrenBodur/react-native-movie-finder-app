@@ -60,31 +60,31 @@ export const cleanSearchMovies = () => ({
   type: actionTypes.CLEAN_SEARCH_MOVIES,
 });
 
-export const getCategories = () => ({
-  type: actionTypes.GET_CATEGORIES,
+export const getMovieCategories = () => ({
+  type: actionTypes.GET_MOVIE_CATEGORIES,
 });
 
-export const getCategoriesSuccess = (data) => ({
-  type: actionTypes.GET_CATEGORIES_SUCCESS,
+export const getMovieCategoriesSuccess = (data) => ({
+  type: actionTypes.GET_MOVIE_CATEGORIES_SUCCESS,
   payload: data,
 });
 
-export const getCategoriesFail = (error) => ({
-  type: actionTypes.GET_CATEGORIES_FAIL,
+export const getMovieCategoriesFail = (error) => ({
+  type: actionTypes.GET_MOVIE_CATEGORIES_FAIL,
   payload: error,
 });
 
-export const getSelectedCategory = () => ({
-  type: actionTypes.GET_SELECTED_CATEGORY,
+export const getSelectedMovieCategory = () => ({
+  type: actionTypes.GET_SELECTED_MOVIE_CATEGORY,
 });
 
-export const getSelectedCategorySuccess = (data) => ({
-  type: actionTypes.GET_SELECTED_CATEGORY_SUCCESS,
+export const getSelectedMovieCategorySuccess = (data) => ({
+  type: actionTypes.GET_SELECTED_MOVIE_CATEGORY_SUCCESS,
   payload: data,
 });
 
-export const getSelectedCategoryFail = (error) => ({
-  type: actionTypes.GET_SELECTED_CATEGORY_FAIL,
+export const getSelectedMovieCategoryFail = (error) => ({
+  type: actionTypes.GET_SELECTED_MOVIE_CATEGORY_FAIL,
   payload: error,
 });
 

@@ -7,7 +7,8 @@ import topRatedTvSeriesReducer from "./topRatedTvSeriesReducer";
 import onTheAirTvSeriesReducer from "./onTheAirTvSeriesReducer";
 import searchMoviesReducer from "./searchMoviesReducer";
 import searchTvSeriesReducer from "./searchTvSeriesReducer";
-import categoriesReducer from "./categoriesReducer";
+import movieCategoriesReducer from "./movieCategoriesReducer";
+import tvSeriesCategoriesReducers from "./tvSeriesCategoriesReducer";
 
 const rootReducer = combineReducers({
   popularMoviesStore: popularMoviesReducer,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   onTheAirTvSeriesStore: onTheAirTvSeriesReducer,
   searchMoviesStore: searchMoviesReducer,
   searchTvSeriesStore: searchTvSeriesReducer,
-  categoriesStore: categoriesReducer,
+  movieCategoriesStore: movieCategoriesReducer,
+  tvSeriesCategoriesStore: tvSeriesCategoriesReducers,
 });
 
 export default rootReducer;

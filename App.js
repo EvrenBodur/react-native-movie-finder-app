@@ -36,12 +36,13 @@ export default function App() {
 
   return (
     <Provider store={store}>
+      <StatusBar backgroundColor="#18171A" />
       <SafeAreaProvider>
         <SafeAreaView style={{ width: "100%", height: "100%" }}>
-          <StatusBar backgroundColor="#18171A" />
           <NavigationContainer>
             <Drawer.Navigator
               openByDefault
+              drawerType="back"
               drawerContentOptions={{
                 activeTintColor: "tomato",
                 inactiveTintColor: "white",
