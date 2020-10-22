@@ -9,6 +9,10 @@ import searchMoviesReducer from "./searchMoviesReducer";
 import searchTvSeriesReducer from "./searchTvSeriesReducer";
 import movieCategoriesReducer from "./movieCategoriesReducer";
 import tvSeriesCategoriesReducers from "./tvSeriesCategoriesReducer";
+import movieDetailTrailerReducer from "./movieDetailTrailerReducer";
+import tvSerieDetailTrailerReducer from "./tvSerieDetailTrailerReducer";
+import movieDetailCastReducer from "./movieDetailCastReducer";
+import tvSerieDetailCastReducer from "./tvSerieDetailCastReducer";
 
 const rootReducer = combineReducers({
   popularMoviesStore: popularMoviesReducer,
@@ -21,6 +25,10 @@ const rootReducer = combineReducers({
   searchTvSeriesStore: searchTvSeriesReducer,
   movieCategoriesStore: movieCategoriesReducer,
   tvSeriesCategoriesStore: tvSeriesCategoriesReducers,
+  movieDetailTrailerStore: movieDetailTrailerReducer,
+  tvSerieDetailTrailerStore: tvSerieDetailTrailerReducer,
+  movieDetailCastStore: movieDetailCastReducer,
+  tvSerieDetailCastStore: tvSerieDetailCastReducer,
 });
 
 export default rootReducer;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import {
   fetchSearchMovies,
@@ -14,10 +15,12 @@ import Movies from "./Movies";
 import Categories from "../Categories";
 import Search from "../Search";
 import { useDispatch, useSelector } from "react-redux";
+import Details from "../Details";
 
 const Tab = createMaterialBottomTabNavigator();
+const Stack = createStackNavigator();
 
-const MoviesScreen = () => {
+const MoviesScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const [selectedValue, setSelectedValue] = useState("");
   const [value, onChangeText] = useState("");
@@ -43,49 +46,82 @@ const MoviesScreen = () => {
   }, [selectedValue, dispatch]);
 
   return (
-    <Tab.Navigator
-      initialRouteName="Movies"
-      activeColor="tomato"
-      inactiveColor="white"
-      barStyle={{ backgroundColor: "#33353D" }}
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#18171A",
+          height: 30,
+        },
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+      }}
     >
-      <Tab.Screen
-        name="Movies"
-        component={Movies}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="movie" color={color} size={26} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Categories"
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Home"
         children={() => (
-          <Categories
-            categories={movieCategories}
-            movies={selectedMovieCategory}
-            selectedValue={selectedValue}
-            setSelectedValue={setSelectedValue}
-          />
+          <Tab.Navigator
+            initialRouteName="Movies"
+            activeColor="tomato"
+            inactiveColor="white"
+            barStyle={{ backgroundColor: "#33353D" }}
+          >
+            <Tab.Screen
+              name="Movies"
+              component={Movies}
+              options={{
+                tabBarIcon: ({ color }) => (
+                  <MaterialCommunityIcons
+                    name="movie"
+                    color={color}
+                    size={26}
+                  />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Categories"
+              children={() => (
+                <Categories
+                  categories={movieCategories}
+                  movies={selectedMovieCategory}
+                  selectedValue={selectedValue}
+                  setSelectedValue={setSelectedValue}
+                  navigation={navigation}
+                />
+              )}
+              options={{
+                tabBarIcon: ({ color }) => (
+                  <MaterialCommunityIcons name="book" color={color} size={26} />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Search"
+              children={() => (
+                <Search
+                  onChangeText={onChangeText}
+                  items={searchMovies}
+                  navigation={navigation}
+                />
+              )}
+              options={{
+                tabBarIcon: ({ color }) => (
+                  <MaterialCommunityIcons
+                    name="search-web"
+                    color={color}
+                    size={26}
+                  />
+                ),
+              }}
+            />
+          </Tab.Navigator>
         )}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="book" color={color} size={26} />
-          ),
-        }}
       />
-      <Tab.Screen
-        name="Search"
-        children={() => (
-          <Search onChangeText={onChangeText} items={searchMovies} />
-        )}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="search-web" color={color} size={26} />
-          ),
-        }}
-      />
-    </Tab.Navigator>
+      <Stack.Screen name="Details" component={Details} />
+    </Stack.Navigator>
   );
 };
 

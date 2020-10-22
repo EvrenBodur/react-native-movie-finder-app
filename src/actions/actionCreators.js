@@ -88,6 +88,34 @@ export const getSelectedMovieCategoryFail = (error) => ({
   payload: error,
 });
 
+export const getMovieDetailTrailer = () => ({
+  type: actionTypes.GET_MOVIE_DETAIL_TRAILER,
+});
+
+export const getMovieDetailTrailerSuccess = (data) => ({
+  type: actionTypes.GET_MOVIE_DETAIL_TRAILER_SUCCESS,
+  payload: data,
+});
+
+export const getMovieDetailTrailerFail = (error) => ({
+  type: actionTypes.GET_MOVIE_DETAIL_TRAILER_FAIL,
+  payload: error,
+});
+
+export const getMovieDetailCast = () => ({
+  type: actionTypes.GET_MOVIE_DETAIL_CAST,
+});
+
+export const getMovieDetailCastSuccess = (data) => ({
+  type: actionTypes.GET_MOVIE_DETAIL_CAST_SUCCESS,
+  payload: data,
+});
+
+export const getMovieDetailCastFail = (error) => ({
+  type: actionTypes.GET_MOVIE_DETAIL_CAST_FAIL,
+  payload: error,
+});
+
 //------------------------------------------------------------------
 
 export const getPopularTvSeries = () => ({
@@ -175,6 +203,34 @@ export const getSelectedTvSeriesCategorySuccess = (data) => ({
 
 export const getSelectedTvSeriesCategoryFail = (error) => ({
   type: actionTypes.GET_SELECTED_TV_SERIES_CATEGORY_FAIL,
+  payload: error,
+});
+
+export const getTvSerieDetailTrailer = () => ({
+  type: actionTypes.GET_TV_SERIE_DETAIL_TRAILER,
+});
+
+export const getTvSerieDetailTrailerSuccess = (data) => ({
+  type: actionTypes.GET_TV_SERIE_DETAIL_TRAILER_SUCCESS,
+  payload: data,
+});
+
+export const getTvSerieDetailTrailerFail = (error) => ({
+  type: actionTypes.GET_TV_SERIES_DETAIL_TRAILER_FAIL,
+  payload: error,
+});
+
+export const getTvSerieDetailCast = () => ({
+  type: actionTypes.GET_TV_SERIE_DETAIL_CAST,
+});
+
+export const getTvSeriesDetailCastSuccess = (data) => ({
+  type: actionTypes.GET_TV_SERIE_DETAIL_CAST_SUCCESS,
+  payload: data,
+});
+
+export const getTvSerieDetailCastFail = (error) => ({
+  type: actionTypes.GET_TV_SERIE_DETAIL_CAST_FAIL,
   payload: error,
 });
 

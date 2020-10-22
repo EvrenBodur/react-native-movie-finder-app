@@ -5,13 +5,13 @@ import {
   fetchTopRatedMovies,
   fetchUpcomingMovies,
 } from "../../src/actions/moviesActions";
-
+import Details from "../Details";
 import Container from "../Container";
 import { useDispatch, useSelector } from "react-redux";
 
 const Tab = createMaterialTopTabNavigator();
 
-const Movies = () => {
+const Movies = ({ navigation }) => {
   const dispatch = useDispatch();
   const { popularMovies } = useSelector((state) => state.popularMoviesStore);
   const { topRatedMovies } = useSelector((state) => state.topRatedMoviesStore);
@@ -44,21 +44,27 @@ const Movies = () => {
     >
       <Tab.Screen
         name="Popular"
-        children={() => <Container movies={popularMovies} />}
+        children={() => (
+          <Container movies={popularMovies} navigation={navigation} />
+        )}
         options={{
           tabBarLabel: "Popular",
         }}
       />
       <Tab.Screen
         name="TopRated"
-        children={() => <Container movies={topRatedMovies} />}
+        children={() => (
+          <Container movies={topRatedMovies} navigation={navigation} />
+        )}
         options={{
           tabBarLabel: "Top Rated",
         }}
       />
       <Tab.Screen
         name="Upcoming"
-        children={() => <Container movies={upcomingMovies} />}
+        children={() => (
+          <Container movies={upcomingMovies} navigation={navigation} />
+        )}
         options={{
           tabBarLabel: "Upcomıng",
         }}

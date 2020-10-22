@@ -52,6 +52,32 @@ export const fetchSearchTvSeries = (value) => async (dispatch) => {
   }
 };
 
+export const fetchTvSerieDetailTrailer = (serieID) => async (dispatch) => {
+  dispatch(action.getTvSerieDetailTrailer());
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/tv/${serieID}/videos?api_key=a78627f739e78c82e6335d377214ef74&language=en-US`
+    );
+    const data = await response.json();
+    dispatch(action.getTvSerieDetailTrailerSuccess(data));
+  } catch (error) {
+    dispatch(action.getTvSerieDetailTrailerFail(error));
+  }
+};
+
+export const fetchTvSerieDetailCast = (serieID) => async (dispatch) => {
+  dispatch(action.getTvSerieDetailCast());
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/tv/${serieID}/credits?api_key=a78627f739e78c82e6335d377214ef74&language=en-US`
+    );
+    const data = await response.json();
+    dispatch(action.getTvSeriesDetailCastSuccess(data));
+  } catch (error) {
+    dispatch(action.getTvSerieDetailCastFail(error));
+  }
+};
+
 export const searchTvSeriesCleaner = () => (dispatch) => {
   dispatch(action.cleanSearchTvSeries());
 };

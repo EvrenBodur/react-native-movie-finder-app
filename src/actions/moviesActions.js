@@ -52,6 +52,32 @@ export const fetchSearchMovies = (value) => async (dispatch) => {
   }
 };
 
+export const fetchMovieDetailTrailer = (movieID) => async (dispatch) => {
+  dispatch(action.getMovieDetailTrailer());
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=a78627f739e78c82e6335d377214ef74&language=en-US`
+    );
+    const data = await response.json();
+    dispatch(action.getMovieDetailTrailerSuccess(data));
+  } catch (error) {
+    dispatch(action.getMovieDetailTrailerFail(error));
+  }
+};
+
+export const fetchMovieDetailCast = (movieID) => async (dispatch) => {
+  dispatch(action.getMovieDetailCast());
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=a78627f739e78c82e6335d377214ef74`
+    );
+    const data = await response.json();
+    dispatch(action.getMovieDetailCastSuccess(data));
+  } catch (error) {
+    dispatch(action.getMovieDetailCastFail(error));
+  }
+};
+
 export const searchMovieCleaner = () => (dispatch) => {
   dispatch(action.cleanSearchMovies());
 };

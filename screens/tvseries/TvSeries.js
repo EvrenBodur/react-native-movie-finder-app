@@ -10,7 +10,7 @@ import Container from "../Container";
 
 const Tab = createMaterialTopTabNavigator();
 
-const TvSeries = () => {
+const TvSeries = ({ navigation }) => {
   const dispatch = useDispatch();
   const { popularTvSeries } = useSelector(
     (state) => state.popularTvSeriesStore
@@ -49,21 +49,27 @@ const TvSeries = () => {
     >
       <Tab.Screen
         name="Popular"
-        children={() => <Container movies={popularTvSeries} />}
+        children={() => (
+          <Container movies={popularTvSeries} navigation={navigation} />
+        )}
         options={{
           tabBarLabel: "Popular",
         }}
       />
       <Tab.Screen
         name="TopRated"
-        children={() => <Container movies={topRatedTvSeries} />}
+        children={() => (
+          <Container movies={topRatedTvSeries} navigation={navigation} />
+        )}
         options={{
           tabBarLabel: "Top Rated",
         }}
       />
       <Tab.Screen
         name="Ontheair"
-        children={() => <Container movies={onTheAirTvSeries} />}
+        children={() => (
+          <Container movies={onTheAirTvSeries} navigation={navigation} />
+        )}
         options={{
           tabBarLabel: "On the Air",
         }}
