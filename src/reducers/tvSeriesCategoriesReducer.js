@@ -44,6 +44,13 @@ export default (state = INITIAL_STATE, action) => {
         isSelectedTvSeriesCategoryLoading: false,
         hasError: action.payload,
       };
+    case actionTypes.CLEAN_MOVIES:
+      return {
+        ...state,
+        selectedTvSeriesCategory: [],
+        isSelectedTvSeriesCategoryLoading: false,
+        hasError: "",
+      };
     default:
       return state;
   }

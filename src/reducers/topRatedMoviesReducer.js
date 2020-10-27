@@ -30,6 +30,15 @@ export default (state = INITIAL_STATE, action) => {
         isTopRatedMoviesLoading: false,
         hasError: action.payload,
       };
+    case actionTypes.CLEAN_MOVIES:
+      return {
+        ...state,
+        topRatedMovies: [],
+        tMoviesTotalResults: 0,
+        tMoviesTotalPages: 0,
+        isTopRatedMoviesLoading: false,
+        hasError: "",
+      };
     default:
       return state;
   }

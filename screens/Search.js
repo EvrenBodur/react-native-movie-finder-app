@@ -2,12 +2,22 @@ import React from "react";
 import { View, StyleSheet, TextInput } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Details from "./Details";
-
 import Container from "./Container";
+import { useFocusEffect } from "@react-navigation/native";
+import { searchMovieCleaner } from "../src/actions/moviesActions";
+import { useDispatch } from "react-redux";
 
 const Stack = createStackNavigator();
 
-const Search = ({ onChangeText, items, navigation }) => {
+const Search = ({ onChangeText, items, navigation, value }) => {
+  const dispatch = useDispatch();
+
+  useFocusEffect(
+    React.useCallback(() => {
+      return () => dispatch(searchMovieCleaner());
+    }, [navigation, dispatch])
+  );
+
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -17,10 +27,12 @@ const Search = ({ onChangeText, items, navigation }) => {
           <View style={styles.container}>
             <View style={styles.inputContainer}>
               <TextInput
+                value={value}
                 style={{ height: 40 }}
                 onChangeText={(text) => onChangeText(text)}
                 placeholder="Search.."
-                backgroundColor="white"
+                backgroundColor="whitesmoke"
+                onSubmitEditing={() => onChangeText("")}
               />
             </View>
             <View style={styles.listContainer}>
@@ -39,7 +51,7 @@ export default Search;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4B5863",
+    backgroundColor: "#18171A",
   },
   inputContainer: {
     width: "100%",

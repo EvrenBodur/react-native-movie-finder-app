@@ -52,6 +52,7 @@ const Container = ({ movies, navigation }) => {
 
     return (
       <View style={styles.cardContainer}>
+        <Text style={styles.textTitle}>{item.title || item.name}</Text>
         <Image
           style={styles.image}
           resizeMode="stretch"
@@ -59,7 +60,6 @@ const Container = ({ movies, navigation }) => {
             uri: `https://image.tmdb.org/t/p/w300${item.poster_path}`,
           }}
         />
-        <Text style={styles.textTitle}>{item.title || item.name}</Text>
         <Text style={styles.textRate}>{item.vote_average}/10</Text>
         <View style={styles.genres}>{itemGenres()}</View>
         <TouchableOpacity
@@ -89,7 +89,7 @@ export default Container;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4B5863",
+    backgroundColor: "#18171A",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
     width: itemWidth,
     minHeight: itemHeight,
     backgroundColor: "#D0D2DA",
-    margin: 10,
-    padding: 10,
+    marginVertical: 10,
+    padding: 5,
     borderRadius: 10,
     shadowColor: "#000",
     shadowOffset: {
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     color: "#4B4453",
     fontSize: 16,
     fontWeight: "700",
-    marginTop: 5,
+    marginBottom: 5,
   },
   textRate: {
     color: "#4B4453",

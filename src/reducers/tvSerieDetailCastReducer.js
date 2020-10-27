@@ -27,6 +27,13 @@ export default (state = INITIAL_STATE, action) => {
         isTvSerieDetailCastLoading: false,
         hasError: action.payload,
       };
+    case actionTypes.CLEAN_MOVIES:
+      return {
+        ...state,
+        tvSerieDetailCast: [],
+        isTvSerieDetailCastLoading: false,
+        hasError: "",
+      };
     default:
       return state;
   }

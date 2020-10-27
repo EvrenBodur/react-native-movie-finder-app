@@ -81,3 +81,7 @@ export const fetchMovieDetailCast = (movieID) => async (dispatch) => {
 export const searchMovieCleaner = () => (dispatch) => {
   dispatch(action.cleanSearchMovies());
 };
+
+export const moviesCleaner = () => (dispatch) => {
+  dispatch(action.cleanMovies());
+};

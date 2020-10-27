@@ -9,7 +9,7 @@ import {
   fetchTvSeriesCategories,
   fetchSelectedTvSeriesCategory,
 } from "../../src/actions/categoriesActions";
-import { cleanSearchTvSeries } from "../../src/actions/actionCreators";
+
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import TvSeries from "./TvSeries";
 import Categories from "../Categories";
@@ -18,9 +18,9 @@ import Details from "../Details";
 import { useDispatch, useSelector } from "react-redux";
 
 const Tab = createMaterialBottomTabNavigator();
+const Stack = createStackNavigator();
 
 const TvSeriesScreen = ({ navigation }) => {
-  const Stack = createStackNavigator();
   const dispatch = useDispatch();
   const [selectedValue, setSelectedValue] = useState("");
   const [value, onChangeText] = useState("");
@@ -31,10 +31,8 @@ const TvSeriesScreen = ({ navigation }) => {
   );
 
   useEffect(() => {
+    if (value === "") return;
     dispatch(fetchSearchTvSeries(value));
-    return () => {
-      dispatch(cleanSearchTvSeries());
-    };
   }, [value, dispatch]);
 
   useEffect(() => {
@@ -50,7 +48,7 @@ const TvSeriesScreen = ({ navigation }) => {
       screenOptions={{
         headerStyle: {
           backgroundColor: "#18171A",
-          height: 30,
+          height: 35,
         },
         headerTintColor: "#fff",
         headerTitleStyle: {
@@ -105,6 +103,7 @@ const TvSeriesScreen = ({ navigation }) => {
                   onChangeText={onChangeText}
                   items={searchTvSeries}
                   navigation={navigation}
+                  value={value}
                 />
               )}
               options={{

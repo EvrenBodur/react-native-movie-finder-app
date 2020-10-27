@@ -116,6 +116,10 @@ export const getMovieDetailCastFail = (error) => ({
   payload: error,
 });
 
+export const cleanMovies = () => ({
+  type: actionTypes.CLEAN_MOVIES,
+});
+
 //------------------------------------------------------------------
 
 export const getPopularTvSeries = () => ({

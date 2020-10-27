@@ -4,6 +4,9 @@ import { Picker } from "@react-native-community/picker";
 import Container from "./Container";
 import Details from "./Details";
 import { createStackNavigator } from "@react-navigation/stack";
+import { useFocusEffect } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { moviesCleaner } from "../src/actions/moviesActions";
 
 const Stack = createStackNavigator();
 
@@ -14,6 +17,14 @@ const Categories = ({
   movies,
   navigation,
 }) => {
+  const dispatch = useDispatch();
+
+  useFocusEffect(
+    React.useCallback(() => {
+      return () => dispatch(moviesCleaner());
+    }, [navigation, dispatch])
+  );
+
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -26,6 +37,7 @@ const Categories = ({
               style={{ height: 40, width: "100%", color: "white" }}
               onValueChange={(itemValue) => setSelectedValue(itemValue)}
             >
+              <Picker.Item label={"Select a category"} value={""} />
               {categories.map((category) => {
                 return (
                   <Picker.Item

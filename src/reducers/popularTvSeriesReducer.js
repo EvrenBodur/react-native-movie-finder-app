@@ -29,6 +29,15 @@ export default (state = INTIIAL_STATE, action) => {
         isPopularTvSeriesLoading: false,
         hasError: action.payload,
       };
+    case actionTypes.CLEAN_MOVIES:
+      return {
+        ...state,
+        popularTvSeries: [],
+        pTvSeriesTotalResults: 0,
+        pTvSeriesTotalPages: 0,
+        isPopularTvSeriesLoading: false,
+        hasError: "",
+      };
     default:
       return state;
   }

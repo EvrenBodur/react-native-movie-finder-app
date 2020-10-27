@@ -8,6 +8,7 @@ import {
   FlatList,
   Dimensions,
 } from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchMovieDetailTrailer,
@@ -18,13 +19,15 @@ import {
   fetchTvSerieDetailCast,
 } from "../src/actions/tvSeriesActions";
 import YoutubePlayer from "react-native-youtube-iframe";
-import { getTvSeriesDetailCastSuccess } from "../src/actions/actionCreators";
+import { moviesCleaner } from "../src/actions/moviesActions";
 
 const { width } = Dimensions.get("window");
 
-const Details = ({ route }) => {
+const Details = ({ route, navigation }) => {
   const { item } = route.params;
+
   const dispatch = useDispatch();
+
   const { movieDetailTrailer } = useSelector(
     (state) => state.movieDetailTrailerStore
   );
@@ -51,6 +54,12 @@ const Details = ({ route }) => {
       dispatch(fetchTvSerieDetailCast(item.id));
     }
   }, [item.id, dispatch]);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      return () => dispatch(moviesCleaner());
+    }, [navigation, dispatch])
+  );
 
   const renderVideoItem = ({ item }) => {
     return (
@@ -90,7 +99,10 @@ const Details = ({ route }) => {
   };
 
   return (
-    <ScrollView style={styles.detailContainer}>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      style={styles.detailContainer}
+    >
       <View style={styles.detailTrailer}>
         <FlatList
           data={item.title ? movieDetailTrailer : tvSerieDetailTrailer}
@@ -100,17 +112,19 @@ const Details = ({ route }) => {
           showsHorizontalScrollIndicator={false}
         />
       </View>
-      <View style={{ width: width }}>
-        <Text style={{ color: "grey" }}>
-          {item.title ? movieDetailTrailer.length : tvSerieDetailTrailer.length}
-          {movieDetailTrailer.length === 1 || tvSerieDetailTrailer.length === 1
-            ? "Trailer found"
-            : "Trailers found slide left"}
-        </Text>
-      </View>
+
       <View style={styles.detailBody}>
+        <Text style={styles.trailerFound}>
+          {movieDetailTrailer.length > 1 || tvSerieDetailTrailer.length > 1
+            ? `${
+                movieDetailTrailer.length || tvSerieDetailTrailer.length
+              } trailers found swipe left`
+            : `${
+                movieDetailTrailer.length || tvSerieDetailTrailer.length
+              } trailer found`}
+        </Text>
         <Text style={styles.detailTitle}>{item.title || item.name}</Text>
-        <Text style={styles.detailRate}>{item.vote_average}</Text>
+        <Text style={styles.detailRate}>Rate: {item.vote_average}</Text>
         <Text style={styles.detailOverview}>{item.overview}</Text>
       </View>
       <View style={styles.casts}>
@@ -131,11 +145,11 @@ export default Details;
 const styles = StyleSheet.create({
   detailContainer: {
     flex: 1,
-    backgroundColor: "#4B5863",
+    backgroundColor: "#18171A",
   },
   detailTrailer: {
     width: "100%",
-    height: 220,
+    height: 200,
   },
   image: {
     width: "100%",
@@ -149,7 +163,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   detailTitle: {
-    fontSize: 18,
+    fontSize: 26,
     color: "whitesmoke",
     fontWeight: "700",
     letterSpacing: 1,
@@ -161,7 +175,6 @@ const styles = StyleSheet.create({
   },
   detailOverview: {
     color: "whitesmoke",
-    letterSpacing: 0.8,
   },
   casts: {
     width: width,
@@ -185,5 +198,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "500",
     height: 15,
+  },
+  trailerFound: {
+    flex: 1,
+    color: "grey",
   },
 });

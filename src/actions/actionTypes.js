@@ -35,6 +35,8 @@ export const GET_MOVIE_DETAIL_CAST = "GET_MOVIE_DETAIL_CAST";
 export const GET_MOVIE_DETAIL_CAST_SUCCESS = "GET_MOVIE_DETAIL_CAST_SUCCESS";
 export const GET_MOVIE_DETAIL_CAST_FAIL = "GET_MOVIE_DETAIL_CAST_FAIL";
 
+export const CLEAN_MOVIES = " CLEAN_MOVIES";
+
 //---------------------------------------------------------------------------
 
 export const GET_POPULAR_TV_SERIES = "GET_POPULAR_TV_SERIES";

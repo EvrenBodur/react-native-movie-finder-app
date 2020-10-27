@@ -29,6 +29,15 @@ export default (state = INTIIAL_STATE, action) => {
         isTopRatedTvSeriesLoading: false,
         hasError: action.payload,
       };
+    case actionTypes.CLEAN_MOVIES:
+      return {
+        ...state,
+        topRatedTvSeries: [],
+        tTvSeriesTotalResults: 0,
+        tTvSeriesTotalPages: 0,
+        isTopRatedTvSeriesLoading: false,
+        hasError: "",
+      };
     default:
       return state;
   }

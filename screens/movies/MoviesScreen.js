@@ -2,15 +2,12 @@ import React, { useEffect, useState } from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import {
-  fetchSearchMovies,
-  searchMovieCleaner,
-} from "../../src/actions/moviesActions";
+import { fetchSearchMovies } from "../../src/actions/moviesActions";
 import {
   fetchMovieCategories,
   fetchSelectedMovieCategory,
 } from "../../src/actions/categoriesActions";
-import { cleanSearchMovies } from "../../src/actions/actionCreators";
+
 import Movies from "./Movies";
 import Categories from "../Categories";
 import Search from "../Search";
@@ -31,10 +28,8 @@ const MoviesScreen = ({ navigation }) => {
   );
 
   useEffect(() => {
+    if (value === "") return;
     dispatch(fetchSearchMovies(value));
-    return () => {
-      dispatch(cleanSearchMovies());
-    };
   }, [value, dispatch]);
 
   useEffect(() => {
@@ -50,7 +45,7 @@ const MoviesScreen = ({ navigation }) => {
       screenOptions={{
         headerStyle: {
           backgroundColor: "#18171A",
-          height: 30,
+          height: 35,
         },
         headerTintColor: "#fff",
         headerTitleStyle: {
@@ -94,7 +89,7 @@ const MoviesScreen = ({ navigation }) => {
               )}
               options={{
                 tabBarIcon: ({ color }) => (
-                  <MaterialCommunityIcons name="book" color={color} size={26} />
+                  <MaterialCommunityIcons name="book" color={color} size={24} />
                 ),
               }}
             />
@@ -105,6 +100,7 @@ const MoviesScreen = ({ navigation }) => {
                   onChangeText={onChangeText}
                   items={searchMovies}
                   navigation={navigation}
+                  value={value}
                 />
               )}
               options={{
