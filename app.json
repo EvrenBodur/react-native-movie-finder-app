@@ -21,6 +21,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "description": "movie finder app using redux-thunk",
+    "githubUrl": "https://github.com/EvrenBodur/react-native-movie-finder-app.git",
+    "android": {
+      "package": "com.evrenbodur.moviefinderreactnative"
     }
   }
 }

@@ -13,6 +13,10 @@ export const fetchPopularTvSeries = () => async (dispatch) => {
   }
 };
 
+export const popularTvSeriesCleaner = () => (dispatch) => {
+  dispatch(action.cleanPopularTvSeries());
+};
+
 export const fetchTopRatedTvSeries = () => async (dispatch) => {
   dispatch(action.getTopRatedTvSeries());
   try {
@@ -24,6 +28,10 @@ export const fetchTopRatedTvSeries = () => async (dispatch) => {
   } catch (error) {
     dispatch(action.getTopRatedTvSeriesFail(error));
   }
+};
+
+export const topRatedTvSeriesCleaner = () => (dispatch) => {
+  dispatch(action.cleanTopRatedTvSeries());
 };
 
 export const fetchOnTheAirTvSeries = () => async (dispatch) => {
@@ -39,6 +47,10 @@ export const fetchOnTheAirTvSeries = () => async (dispatch) => {
   }
 };
 
+export const onTheAirTvSeriesCleaner = () => (dispatch) => {
+  dispatch(action.cleanOnTheAirTvSeries());
+};
+
 export const fetchSearchTvSeries = (value) => async (dispatch) => {
   dispatch(action.getSearchTvSeries());
   try {
@@ -50,6 +62,10 @@ export const fetchSearchTvSeries = (value) => async (dispatch) => {
   } catch (error) {
     dispatch(action.getSearchTvSeriesFail(error));
   }
+};
+
+export const searchTvSeriesCleaner = () => (dispatch) => {
+  dispatch(action.cleanSearchTvSeries());
 };
 
 export const fetchTvSerieDetailTrailer = (serieID) => async (dispatch) => {
@@ -65,6 +81,10 @@ export const fetchTvSerieDetailTrailer = (serieID) => async (dispatch) => {
   }
 };
 
+export const tvSerieDetailTrailerCleaner = () => (dispatch) => {
+  dispatch(action.cleanTvSerieDetailTrailer());
+};
+
 export const fetchTvSerieDetailCast = (serieID) => async (dispatch) => {
   dispatch(action.getTvSerieDetailCast());
   try {
@@ -78,6 +98,6 @@ export const fetchTvSerieDetailCast = (serieID) => async (dispatch) => {
   }
 };
 
-export const searchTvSeriesCleaner = () => (dispatch) => {
-  dispatch(action.cleanSearchTvSeries());
+export const tvSerieDetailCastCleaner = () => (dispatch) => {
+  dispatch(action.cleanTvSerieDetailCast());
 };

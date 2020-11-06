@@ -14,6 +14,10 @@ export const getPopularMoviesFail = (error) => ({
   payload: error,
 });
 
+export const cleanPopularMovies = () => ({
+  type: actionTypes.CLEAN_POPULAR_MOVIES,
+});
+
 export const getTopRatedMovies = () => ({
   type: actionTypes.GET_TOP_RATED_MOVIES,
 });
@@ -28,6 +32,10 @@ export const getTopRatedMoviesFail = (error) => ({
   payload: error,
 });
 
+export const cleanTopRatedMovies = () => ({
+  type: actionTypes.CLEAN_TOP_RATED_MOVIES,
+});
+
 export const getUpcomingMovies = () => ({
   type: actionTypes.GET_UPCOMING_MOVIES,
 });
@@ -40,6 +48,10 @@ export const getUpcomingMoviesSuccess = (data) => ({
 export const getUpcomingMoviesFail = (error) => ({
   type: actionTypes.GET_UPCOMING_MOVIES_FAIL,
   payload: error,
+});
+
+export const cleanUpcomingMovies = () => ({
+  type: actionTypes.CLEAN_UPCOMING_MOVIES,
 });
 
 export const getSearchMovies = () => ({
@@ -88,6 +100,10 @@ export const getSelectedMovieCategoryFail = (error) => ({
   payload: error,
 });
 
+export const cleanSelectedMovieCategory = () => ({
+  type: actionTypes.CLEAN_SELECTED_MOVIES_CATEGORY,
+});
+
 export const getMovieDetailTrailer = () => ({
   type: actionTypes.GET_MOVIE_DETAIL_TRAILER,
 });
@@ -100,6 +116,10 @@ export const getMovieDetailTrailerSuccess = (data) => ({
 export const getMovieDetailTrailerFail = (error) => ({
   type: actionTypes.GET_MOVIE_DETAIL_TRAILER_FAIL,
   payload: error,
+});
+
+export const cleanMovieDetailTrailer = () => ({
+  type: actionTypes.CLEAN_MOVIE_DETAIL_TRAILER,
 });
 
 export const getMovieDetailCast = () => ({
@@ -116,8 +136,8 @@ export const getMovieDetailCastFail = (error) => ({
   payload: error,
 });
 
-export const cleanMovies = () => ({
-  type: actionTypes.CLEAN_MOVIES,
+export const cleanMovieDetailCast = () => ({
+  type: actionTypes.CLEAN_MOVIE_DETAIL_CAST,
 });
 
 //------------------------------------------------------------------
@@ -136,6 +156,10 @@ export const getPopularTvSeriesFail = (error) => ({
   payload: error,
 });
 
+export const cleanPopularTvSeries = () => ({
+  type: actionTypes.CLEAN_POPULAR_TV_SERIES,
+});
+
 export const getTopRatedTvSeries = () => ({
   type: actionTypes.GET_TOP_RATED_TV_SERIES,
 });
@@ -150,6 +174,10 @@ export const getTopRatedTvSeriesFail = (error) => ({
   payload: error,
 });
 
+export const cleanTopRatedTvSeries = () => ({
+  type: actionTypes.CLEAN_TOP_RATED_TV_SERIES,
+});
+
 export const getOnTheAirTvSeries = () => ({
   type: actionTypes.GET_ON_THE_AIR_TV_SERIES,
 });
@@ -162,6 +190,10 @@ export const getOnTheAirTvSeriesSuccess = (data) => ({
 export const getOnTheAirTvSeriesFail = (error) => ({
   type: actionTypes.GET_ON_THE_AIR_TV_SERIES_FAIL,
   payload: error,
+});
+
+export const cleanOnTheAirTvSeries = () => ({
+  type: actionTypes.CLEAN_ON_THE_AIR_TV_SERIES,
 });
 
 export const getSearchTvSeries = () => ({
@@ -210,6 +242,10 @@ export const getSelectedTvSeriesCategoryFail = (error) => ({
   payload: error,
 });
 
+export const cleanSelectedTvSeriesCategory = () => ({
+  type: actionTypes.CLEAN_SELECTED_TV_SERIES_CATEGORY,
+});
+
 export const getTvSerieDetailTrailer = () => ({
   type: actionTypes.GET_TV_SERIE_DETAIL_TRAILER,
 });
@@ -224,6 +260,10 @@ export const getTvSerieDetailTrailerFail = (error) => ({
   payload: error,
 });
 
+export const cleanTvSerieDetailTrailer = () => ({
+  type: actionTypes.CLEAN__TV_SERIE_DETAIL_TRAILER,
+});
+
 export const getTvSerieDetailCast = () => ({
   type: actionTypes.GET_TV_SERIE_DETAIL_CAST,
 });
@@ -236,6 +276,10 @@ export const getTvSeriesDetailCastSuccess = (data) => ({
 export const getTvSerieDetailCastFail = (error) => ({
   type: actionTypes.GET_TV_SERIE_DETAIL_CAST_FAIL,
   payload: error,
+});
+
+export const cleanTvSerieDetailCast = () => ({
+  type: actionTypes.CLEAN_TV_SERIE_DETAIL_CAST,
 });
 
 //-----------------------------------------------------------------------

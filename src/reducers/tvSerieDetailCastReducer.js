@@ -27,7 +27,7 @@ export default (state = INITIAL_STATE, action) => {
         isTvSerieDetailCastLoading: false,
         hasError: action.payload,
       };
-    case actionTypes.CLEAN_MOVIES:
+    case actionTypes.CLEAN_TV_SERIE_DETAIL_CAST:
       return {
         ...state,
         tvSerieDetailCast: [],

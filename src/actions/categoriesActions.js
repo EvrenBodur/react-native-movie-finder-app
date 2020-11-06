@@ -28,6 +28,10 @@ export const fetchSelectedMovieCategory = (selectedValue) => async (
   }
 };
 
+export const selectedMovieCategoryCleaner = () => (dispatch) => {
+  dispatch(action.cleanSelectedMovieCategory());
+};
+
 export const fetchTvSeriesCategories = () => async (dispatch) => {
   dispatch(action.getTvSeriesCategories());
   try {
@@ -54,4 +58,8 @@ export const fetchSelectedTvSeriesCategory = (selectedValue) => async (
   } catch (error) {
     dispatch(action.getSelectedTvSeriesCategoryFail(error));
   }
+};
+
+export const selectedTvSeriesCategoryCleaner = () => (dispatch) => {
+  dispatch(action.cleanSelectedTvSeriesCategory());
 };

@@ -29,7 +29,7 @@ export default (state = INTIIAL_STATE, action) => {
         isTopRatedTvSeriesLoading: false,
         hasError: action.payload,
       };
-    case actionTypes.CLEAN_MOVIES:
+    case actionTypes.CLEAN_TOP_RATED_TV_SERIES:
       return {
         ...state,
         topRatedTvSeries: [],

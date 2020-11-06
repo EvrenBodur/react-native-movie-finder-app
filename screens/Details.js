@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Text,
   View,
@@ -13,13 +13,16 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchMovieDetailTrailer,
   fetchMovieDetailCast,
+  movieDetailTrailerCleaner,
+  movieDetailCastCleaner,
 } from "../src/actions/moviesActions";
 import {
   fetchTvSerieDetailTrailer,
   fetchTvSerieDetailCast,
+  tvSerieDetailTrailerCleaner,
+  tvSerieDetailCastCleaner,
 } from "../src/actions/tvSeriesActions";
 import YoutubePlayer from "react-native-youtube-iframe";
-import { moviesCleaner } from "../src/actions/moviesActions";
 
 const { width } = Dimensions.get("window");
 
@@ -44,21 +47,24 @@ const Details = ({ route, navigation }) => {
     (state) => state.tvSerieDetailCastStore
   );
 
-  useEffect(() => {
-    if (item.title) {
-      dispatch(fetchMovieDetailTrailer(item.id));
-      dispatch(fetchMovieDetailCast(item.id));
-    }
-    if (item.name) {
-      dispatch(fetchTvSerieDetailTrailer(item.id));
-      dispatch(fetchTvSerieDetailCast(item.id));
-    }
-  }, [item.id, dispatch]);
-
   useFocusEffect(
     React.useCallback(() => {
-      return () => dispatch(moviesCleaner());
-    }, [navigation, dispatch])
+      if (item.title) {
+        dispatch(fetchMovieDetailTrailer(item.id));
+        dispatch(fetchMovieDetailCast(item.id));
+      }
+      if (item.name) {
+        dispatch(fetchTvSerieDetailTrailer(item.id));
+        dispatch(fetchTvSerieDetailCast(item.id));
+      }
+
+      return () => {
+        dispatch(movieDetailCastCleaner());
+        dispatch(movieDetailTrailerCleaner());
+        dispatch(tvSerieDetailTrailerCleaner());
+        dispatch(tvSerieDetailCastCleaner());
+      };
+    }, [navigation])
   );
 
   const renderVideoItem = ({ item }) => {

@@ -29,7 +29,7 @@ export default (state = INITIAL_STATE, action) => {
         isSearchTvSeriesLoading: false,
         hasError: action.payload,
       };
-    case actionTypes.CLEAN_SEARCH_MOVIES:
+    case actionTypes.CLEAN_SEARCH_TV_SERIES:
       return {
         ...state,
         searchTvSeries: [],

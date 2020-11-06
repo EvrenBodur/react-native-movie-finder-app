@@ -13,6 +13,10 @@ export const fetchPopularMovies = () => async (dispatch) => {
   }
 };
 
+export const popularMoviesCleaner = () => (dispatch) => {
+  dispatch(action.cleanPopularMovies());
+};
+
 export const fetchTopRatedMovies = () => async (dispatch) => {
   dispatch(action.getTopRatedMovies());
   try {
@@ -24,6 +28,10 @@ export const fetchTopRatedMovies = () => async (dispatch) => {
   } catch (error) {
     dispatch(action.getTopRatedMoviesFail(error));
   }
+};
+
+export const topRatedMoviesCleaner = () => (dispatch) => {
+  dispatch(action.cleanTopRatedMovies());
 };
 
 export const fetchUpcomingMovies = () => async (dispatch) => {
@@ -39,6 +47,10 @@ export const fetchUpcomingMovies = () => async (dispatch) => {
   }
 };
 
+export const upcomingMoviesCleaner = () => (dispatch) => {
+  dispatch(action.cleanUpcomingMovies());
+};
+
 export const fetchSearchMovies = (value) => async (dispatch) => {
   dispatch(action.getSearchMovies());
   try {
@@ -50,6 +62,10 @@ export const fetchSearchMovies = (value) => async (dispatch) => {
   } catch (error) {
     dispatch(action.getSearchMoviesFail(error));
   }
+};
+
+export const searchMoviesCleaner = () => (dispatch) => {
+  dispatch(action.cleanSearchMovies());
 };
 
 export const fetchMovieDetailTrailer = (movieID) => async (dispatch) => {
@@ -65,6 +81,10 @@ export const fetchMovieDetailTrailer = (movieID) => async (dispatch) => {
   }
 };
 
+export const movieDetailTrailerCleaner = () => (dispatch) => {
+  dispatch(action.cleanMovieDetailTrailer());
+};
+
 export const fetchMovieDetailCast = (movieID) => async (dispatch) => {
   dispatch(action.getMovieDetailCast());
   try {
@@ -78,10 +98,6 @@ export const fetchMovieDetailCast = (movieID) => async (dispatch) => {
   }
 };
 
-export const searchMovieCleaner = () => (dispatch) => {
-  dispatch(action.cleanSearchMovies());
-};
-
-export const moviesCleaner = () => (dispatch) => {
-  dispatch(action.cleanMovies());
+export const movieDetailCastCleaner = () => (dispatch) => {
+  dispatch(action.cleanMovieDetailCast());
 };

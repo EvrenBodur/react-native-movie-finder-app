@@ -25,7 +25,7 @@ export default (state = INITIAL_STATE, action) => {
         isMovieDetailTrailerLoading: false,
         hasError: action.payload,
       };
-    case actionTypes.CLEAN_MOVIES:
+    case actionTypes.CLEAN_MOVIE_DETAIL_TRAILER:
       return {
         ...state,
         movieDetailTrailer: [],

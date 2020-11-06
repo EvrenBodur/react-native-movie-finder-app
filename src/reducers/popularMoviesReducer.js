@@ -30,7 +30,7 @@ export default (state = INITIAL_STATE, action) => {
         isPopularMoviesLoading: false,
         hasError: action.payload,
       };
-    case actionTypes.CLEAN_MOVIES:
+    case actionTypes.CLEAN_POPULAR_MOVIES:
       return {
         ...state,
         popularMovies: [],

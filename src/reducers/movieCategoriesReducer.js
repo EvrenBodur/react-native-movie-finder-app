@@ -44,7 +44,7 @@ export default (state = INTIAL_STATE, action) => {
         isSelectedMovieCategoryLoading: false,
         hasError: action.payload,
       };
-    case actionTypes.CLEAN_MOVIES:
+    case actionTypes.CLEAN_SELECTED_MOVIES_CATEGORY:
       return {
         ...state,
         selectedMovieCategory: [],

@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import {
-  fetchSearchTvSeries,
-  searchTvSeriesCleaner,
-} from "../../src/actions/tvSeriesActions";
+import { fetchSearchTvSeries } from "../../src/actions/tvSeriesActions";
 import {
   fetchTvSeriesCategories,
   fetchSelectedTvSeriesCategory,
 } from "../../src/actions/categoriesActions";
-
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import TvSeries from "./TvSeries";
 import Categories from "../Categories";
@@ -31,7 +27,6 @@ const TvSeriesScreen = ({ navigation }) => {
   );
 
   useEffect(() => {
-    if (value === "") return;
     dispatch(fetchSearchTvSeries(value));
   }, [value, dispatch]);
 
@@ -103,7 +98,6 @@ const TvSeriesScreen = ({ navigation }) => {
                   onChangeText={onChangeText}
                   items={searchTvSeries}
                   navigation={navigation}
-                  value={value}
                 />
               )}
               options={{

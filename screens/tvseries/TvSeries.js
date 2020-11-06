@@ -7,8 +7,6 @@ import {
   fetchOnTheAirTvSeries,
 } from "../../src/actions/tvSeriesActions";
 import Container from "../Container";
-import { useFocusEffect } from "@react-navigation/native";
-import { moviesCleaner } from "../../src/actions/moviesActions";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -24,15 +22,11 @@ const TvSeries = ({ navigation }) => {
     (state) => state.onTheAirTvSeriesStore
   );
 
-  useFocusEffect(
-    React.useCallback(() => {
-      dispatch(fetchPopularTvSeries());
-      dispatch(fetchTopRatedTvSeries());
-      dispatch(fetchOnTheAirTvSeries());
-
-      return () => dispatch(moviesCleaner());
-    }, [navigation, dispatch])
-  );
+  useEffect(() => {
+    dispatch(fetchPopularTvSeries());
+    dispatch(fetchTopRatedTvSeries());
+    dispatch(fetchOnTheAirTvSeries());
+  }, [dispatch]);
 
   return (
     <Tab.Navigator

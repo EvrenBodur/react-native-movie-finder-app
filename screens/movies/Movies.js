@@ -4,11 +4,9 @@ import {
   fetchPopularMovies,
   fetchTopRatedMovies,
   fetchUpcomingMovies,
-  moviesCleaner,
 } from "../../src/actions/moviesActions";
 import Container from "../Container";
 import { useDispatch, useSelector } from "react-redux";
-import { useFocusEffect } from "@react-navigation/native";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -18,19 +16,11 @@ const Movies = ({ navigation }) => {
   const { topRatedMovies } = useSelector((state) => state.topRatedMoviesStore);
   const { upcomingMovies } = useSelector((state) => state.upcomingMoviesStore);
 
-  // useEffect(() => {
-
-  // }, [dispatch]);
-
-  useFocusEffect(
-    React.useCallback(() => {
-      dispatch(fetchPopularMovies());
-      dispatch(fetchTopRatedMovies());
-      dispatch(fetchUpcomingMovies());
-
-      return () => dispatch(moviesCleaner());
-    }, [navigation, dispatch])
-  );
+  useEffect(() => {
+    dispatch(fetchPopularMovies());
+    dispatch(fetchTopRatedMovies());
+    dispatch(fetchUpcomingMovies());
+  }, []);
 
   return (
     <Tab.Navigator

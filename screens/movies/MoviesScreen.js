@@ -7,7 +7,6 @@ import {
   fetchMovieCategories,
   fetchSelectedMovieCategory,
 } from "../../src/actions/categoriesActions";
-
 import Movies from "./Movies";
 import Categories from "../Categories";
 import Search from "../Search";
